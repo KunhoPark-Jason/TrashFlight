@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
             
             spawnCount ++;
 
-            if (spawnCount % 20 == 0)
+            if (spawnCount % 15 == 0)
             {
                 enemyIndex ++;
                 yield return new WaitForSeconds(5f);

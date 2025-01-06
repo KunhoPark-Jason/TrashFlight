@@ -84,6 +84,16 @@ public class GameManager : MonoBehaviour
 
     public void PlayAgain()
     {
+        // 1) 버튼 클릭 시 소리를 재생
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
+
+        // 2) 일정 시간 후에 씬을 다시 로드
+        Invoke("ReloadScene", 0.3f); // 0.5초 뒤에 ReloadScene() 실행
+    }
+
+    void ReloadScene()
+    {
         SceneManager.LoadScene("TrashFlight");
     }
 }

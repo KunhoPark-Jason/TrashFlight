@@ -18,6 +18,9 @@ public class Player : MonoBehaviour
     private float shootInterval = 0.1f;
     private float lastShotTime = 0f;
 
+    [SerializeField]
+    private AudioSource[] audioSources;
+
     void Update() 
     {
     //    키보드로 플레이어어 컨트롤롤 1
@@ -64,7 +67,8 @@ public class Player : MonoBehaviour
         }
         else if (other.gameObject.tag == "Coin")
         {
-            GameManager.instance.IncreaseCoin();         
+            GameManager.instance.IncreaseCoin();
+            audioSources[0].PlayOneShot(audioSources[0].clip);
             Destroy(other.gameObject);
         }
     }
@@ -72,6 +76,10 @@ public class Player : MonoBehaviour
     public void Upgrade()
     {
         weaponIndex ++;
+        if (weaponIndex <= 2)
+        {
+            audioSources[1].PlayOneShot(audioSources[1].clip);
+        }
         if (weaponIndex >= weapons.Length)
         {
             weaponIndex = weapons.Length - 1;
