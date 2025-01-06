@@ -51,6 +51,10 @@ public class Enemy : MonoBehaviour
             healthBar.UpdateHealthBar(hp, maxhp);
             if (hp <= 0)
             {
+                if (gameObject.tag == "Boss")
+                {
+                    GameManager.instance.SetGameOver();
+                }
                 Destroy(gameObject);
                 Instantiate(coin, transform.position, Quaternion.identity);
             }

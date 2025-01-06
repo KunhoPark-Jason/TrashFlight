@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI text;
 
+    [HideInInspector]
+    public bool isGameOver = false;
+
     void Awake() {
         if (instance == null)
         {
@@ -30,6 +33,16 @@ public class GameManager : MonoBehaviour
             {
                 player.Upgrade();
             }
+        }
+    }
+
+    public void SetGameOver()
+    {
+        isGameOver = true;
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        if (enemySpawner != null)
+        {
+            enemySpawner.StopEnemyRoutine();
         }
     }
 }
