@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // 싱글턴...? Gamemanager 하는 것이라 함... 뭐지?
 public class GameManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI text;
+
+    [SerializeField]
+    private GameObject gameOverPanel;
 
     [HideInInspector]
     public bool isGameOver = false;
@@ -39,10 +43,23 @@ public class GameManager : MonoBehaviour
     public void SetGameOver()
     {
         isGameOver = true;
+
         EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
         if (enemySpawner != null)
         {
             enemySpawner.StopEnemyRoutine();
         }
+
+        Invoke("ShowGameOverPanel", 1f);
+    }
+
+    void ShowGameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene("TrashFlight");
     }
 }
