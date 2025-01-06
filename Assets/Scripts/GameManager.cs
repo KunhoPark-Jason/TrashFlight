@@ -15,8 +15,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject gameOverPanel;
 
+    [SerializeField]
+    private GameObject gameClearPanel;
+
     [HideInInspector]
     public bool isGameOver = false;
+    
+    [HideInInspector]
+    public bool isGameClear = false;
 
     void Awake() {
         if (instance == null)
@@ -53,9 +59,27 @@ public class GameManager : MonoBehaviour
         Invoke("ShowGameOverPanel", 1f);
     }
 
+    public void SetGameClear()
+    {
+        isGameClear = true;
+
+        EnemySpawner enemySpawner = FindObjectOfType<EnemySpawner>();
+        if (enemySpawner != null)
+        {
+            enemySpawner.StopEnemyRoutine();
+        }
+
+        Invoke("ShowGameClearPanel", 1f);
+    }
+
     void ShowGameOverPanel()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    void ShowGameClearPanel()
+    {
+        gameClearPanel.SetActive(true);
     }
 
     public void PlayAgain()

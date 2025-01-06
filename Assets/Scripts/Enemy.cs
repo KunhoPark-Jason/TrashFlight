@@ -32,6 +32,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+            // 게임 매니저가 있고, 게임이 이미 끝난 상태라면
+    // 아래 이동 로직을 그냥 실행하지 않고 종료
+        if (GameManager.instance != null && GameManager.instance.isGameOver || GameManager.instance.isGameClear)
+        {
+            return; 
+        }
         transform.position += Vector3.down * moveSpeed * Time.deltaTime;
         if (transform.position.y < minY){
             Destroy(gameObject);
@@ -53,7 +59,7 @@ public class Enemy : MonoBehaviour
             {
                 if (gameObject.tag == "Boss")
                 {
-                    GameManager.instance.SetGameOver();
+                    GameManager.instance.SetGameClear();
                 }
                 Destroy(gameObject);
                 Instantiate(coin, transform.position, Quaternion.identity);

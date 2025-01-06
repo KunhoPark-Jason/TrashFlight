@@ -8,7 +8,7 @@ public class Background : MonoBehaviour
     void Update() 
     {
         // GameManager가 존재하고, 게임 오버 상태라면 더 이상 배경을 움직이지 않음
-        if (GameManager.instance != null && GameManager.instance.isGameOver)
+        if (GameManager.instance != null && GameManager.instance.isGameOver || GameManager.instance.isGameClear)
         {
             return; // 아래 이동 로직을 스킵
         }
