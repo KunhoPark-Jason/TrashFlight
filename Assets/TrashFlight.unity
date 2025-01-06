@@ -626,7 +626,8 @@ MonoBehaviour:
   - {fileID: 4341925823036838278, guid: 0bf8a0044fe32c64ea393525b60398ba, type: 3}
   - {fileID: 4341925823036838278, guid: 72215799018b2854c99bd7d92c7cdea7, type: 3}
   - {fileID: 4341925823036838278, guid: 0836453653e6a5148858f439aca61ec8, type: 3}
-  spawnInterval: 0.5
+  boss: {fileID: 4341925823036838278, guid: cf593fd246112a44d92d7ced0836f0f1, type: 3}
+  spawnInterval: 0.1
 --- !u!1 &466112511
 GameObject:
   m_ObjectHideFlags: 0
